@@ -4,7 +4,7 @@ namespace BaseProject.Infra.Security
     {
         public string Audience { get; set; }
 
-        public string IsUser { get; set; }
+        public string Issuer { get; set; }
 
         public int Seconds { get; set; }
     }

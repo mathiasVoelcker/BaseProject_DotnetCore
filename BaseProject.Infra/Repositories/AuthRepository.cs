@@ -15,16 +15,20 @@ namespace BaseProject.Infra.Repositories
     {
         private SigningConfiguration _signingConfig;
 
+        private TokenConfiguration _tokenConfiguration;
+
         public AuthRepository(
             IDbSession dbSession, 
-            SigningConfiguration signingConfiguration) 
+            SigningConfiguration signingConfiguration,
+            TokenConfiguration tokenConfigurations) 
             : base(dbSession) { 
                 _signingConfig = signingConfiguration;
+                _tokenConfiguration = tokenConfigurations;
         }
 
         public async Task<User> GetUser(string username) {
             using (var connection = CreateConnection()) {
-                var user = await connection.QueryFirstOrDefaultAsync<User>(UserScripts.GetSql, new { username });
+                var user = await connection.QueryFirstOrDefaultAsync<User>(UserScripts.Get, new { username });
                 return user;
             }
         }
@@ -37,6 +41,8 @@ namespace BaseProject.Infra.Repositories
             };
 
             var tokenDescriptor = new SecurityTokenDescriptor {
+                Issuer = _tokenConfiguration.Issuer,
+                Audience = _tokenConfiguration.Audience,
                 Subject = new ClaimsIdentity(claims),
                 Expires = DateTime.Now.AddDays(1),
                 SigningCredentials = _signingConfig.Credentials

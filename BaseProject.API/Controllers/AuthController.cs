@@ -21,7 +21,11 @@ namespace BaseProject.API.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody]LoginDto login) {
             var token = await _authApplication.Login(login);
-            return Ok(token);
+            return Ok(new {
+                authenticated = true,
+                accessToken = token,
+                message = "OK"
+            });
         }
 
         [HttpPost("register")]

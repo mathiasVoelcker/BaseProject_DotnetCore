@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
 namespace BaseProject.API
 {
@@ -27,11 +28,15 @@ namespace BaseProject.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddCors();
 
             var signingConfiguration = new SigningConfiguration();
-            services.AddSingleton(signingConfiguration);
+            // services.AddSingleton(signingConfiguration);
+
+            var tokenConfiguration = new TokenConfiguration();
+            new ConfigureFromConfigurationOptions<TokenConfiguration>(
+                Configuration.GetSection("TokenConfiguration"))
+                    .Configure(tokenConfiguration);
+            // services.AddSingleton(tokenConfiguration);
 
             services.AddAuthentication(authOptions => {
                 authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -39,6 +44,8 @@ namespace BaseProject.API
             }).AddJwtBearer(bearerOptions => {
                 var paramsValidation = bearerOptions.TokenValidationParameters;
                 paramsValidation.IssuerSigningKey = signingConfiguration.Key;
+                paramsValidation.ValidAudience = tokenConfiguration.Audience;
+                paramsValidation.ValidIssuer = tokenConfiguration.Issuer;
                 paramsValidation.ValidateIssuerSigningKey = true;
                 paramsValidation.ValidateLifetime = true;
                 paramsValidation.ClockSkew = TimeSpan.Zero;
@@ -56,7 +63,12 @@ namespace BaseProject.API
             var dbSession = new DbSession(connectionString);
             services.AddScoped<IDbSession>(sb => dbSession);
             services.AddScoped<IAuthApplication, AuthApplication>();
-            services.AddScoped<IAuthRepository>(factory => new AuthRepository(dbSession, signingConfiguration));
+            services.AddScoped<IDefaultValueApplication, DefaultValueApplication>();
+            services.AddScoped<IAuthRepository>(factory => new AuthRepository(dbSession, signingConfiguration, tokenConfiguration));
+            services.AddScoped<IDefaultValueRepository, DefaultValueRepository>();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -73,6 +85,7 @@ namespace BaseProject.API
             }
 
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
