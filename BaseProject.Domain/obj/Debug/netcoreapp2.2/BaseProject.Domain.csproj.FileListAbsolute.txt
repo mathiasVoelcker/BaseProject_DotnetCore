@@ -1,0 +1,16 @@
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Domain.deps.json
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Domain.runtimeconfig.json
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Domain.runtimeconfig.dev.json
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Domain.dll
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Domain.pdb
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Infra.dll
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Model.dll
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Infra.pdb
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/bin/Debug/netcoreapp2.2/BaseProject.Model.pdb
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.csprojAssemblyReference.cache
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.csproj.CoreCompileInputs.cache
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.AssemblyInfoInputs.cache
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.AssemblyInfo.cs
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.csproj.CopyComplete
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.dll
+/Users/mathias_v94/Desktop/Developer/C#/dotnet-core/BaseProject/BaseProject.Domain/obj/Debug/netcoreapp2.2/BaseProject.Domain.pdb
